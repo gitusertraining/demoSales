@@ -44,7 +44,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" show="false" value="enc:system.encryption.key.v1:tItk6X5PvFEDzR6NmIZJRHEK7eqErdW0ohz9mYWy"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" show="false" value="enc:system.encryption.key.v1:XASMMTLc1o4mvJcPBHQOiy12CFKqvBEn1J2UATar"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" show="false" value="&quot;&quot;"/>
@@ -54,18 +54,18 @@
     <elementParameter field="CHECK" name="DISABLE_ERROR" show="false" value="false"/>
     <elementParameter field="CHECK" name="DISABLE_WARNINGS" show="false" value="false"/>
     <elementParameter field="CHECK" name="DISABLE_INFO" show="false" value="false"/>
-    <elementParameter field="CHECK" name="ON_STATCATCHER_FLAG" value="true"/>
-    <elementParameter field="CHECK" name="ON_LOGCATCHER_FLAG" value="true"/>
-    <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="true"/>
-    <elementParameter field="CHECK" name="ON_CONSOLE_FLAG" value="true"/>
-    <elementParameter field="CHECK" name="ON_FILES_FLAG" value="true"/>
-    <elementParameter field="DIRECTORY" name="FILE_PATH" value="&quot;C:/Users/nrehman/NagmaRemote/.metadata&quot;"/>
-    <elementParameter field="TEXT" name="FILENAME_STATS" value="&quot;stats_file.txt&quot;"/>
-    <elementParameter field="TEXT" name="FILENAME_LOGS" value="&quot;logs_file.txt&quot;"/>
-    <elementParameter field="TEXT" name="FILENAME_METTER" value="&quot;meter_file.txt&quot;"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="ISO-8859-15"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="ON_DATABASE_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_STATCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_LOGCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_CONSOLE_FLAG" show="false" value="false"/>
+    <elementParameter field="CHECK" name="ON_FILES_FLAG" show="false" value="false"/>
+    <elementParameter field="DIRECTORY" name="FILE_PATH" show="false" value="&quot;C:/Users/nrehman/NagmaRemote/.metadata&quot;"/>
+    <elementParameter field="TEXT" name="FILENAME_STATS" show="false" value="&quot;stats_file.txt&quot;"/>
+    <elementParameter field="TEXT" name="FILENAME_LOGS" show="false" value="&quot;logs_file.txt&quot;"/>
+    <elementParameter field="TEXT" name="FILENAME_METTER" show="false" value="&quot;meter_file.txt&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="ISO-8859-15"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" show="false" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="ON_DATABASE_FLAG" show="false" value="false"/>
     <elementParameter field="CLOSED_LIST" name="DB_TYPE" show="false" value="tJDBCOutput"/>
     <elementParameter field="CLOSED_LIST" name="DB_VERSION" show="false" value="ORACLE_12"/>
     <elementParameter field="TEXT" name="URL" show="false" value="&quot;&quot;"/>
@@ -79,15 +79,15 @@
     <elementParameter field="TEXT" name="PROPERTIES" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="USER" show="false" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" show="false" value="enc:system.encryption.key.v1:SXfB6aO8fy48KG9TYWSzEyfkuLlLD1iLoYf2Bty4"/>
+    <elementParameter field="PASSWORD" name="PASS" show="false" value="enc:system.encryption.key.v1:SPPXEryJtGGIWbmxZcYzrcGTPwCgBoY9CpkPjRzP"/>
     <elementParameter field="FILE" name="DBFILE" show="false" value="&quot;&quot;"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" show="false" value="&quot;&quot;"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" show="false" value="&quot;&quot;"/>
     <elementParameter field="DBTABLE" name="TABLE_METER" show="false" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="CATCH_RUNTIME_ERRORS" value="true"/>
-    <elementParameter field="CHECK" name="CATCH_USER_ERRORS" value="true"/>
-    <elementParameter field="CHECK" name="CATCH_USER_WARNING" value="true"/>
-    <elementParameter field="CHECK" name="CATCH_REALTIME_STATS" value="true"/>
+    <elementParameter field="CHECK" name="CATCH_RUNTIME_ERRORS" show="false" value="true"/>
+    <elementParameter field="CHECK" name="CATCH_USER_ERRORS" show="false" value="true"/>
+    <elementParameter field="CHECK" name="CATCH_USER_WARNING" show="false" value="true"/>
+    <elementParameter field="CHECK" name="CATCH_REALTIME_STATS" show="false" value="false"/>
     <elementParameter field="TEXT" name="HEADERFOOTER_HEADERID" show="false" value=""/>
     <elementParameter field="CHECK" name="HEADER_ENABLED" show="false" value="false"/>
     <elementParameter field="TEXT" name="HEADER_LIBRARY" show="false" value=""/>
@@ -98,12 +98,7 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_CODE" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" show="false" value=""/>
-    <routinesParameter id="_Ne22UPnaEeut1L05m52yjw" name="DQTechnical"/>
-    <routinesParameter id="_Nepa8PnaEeut1L05m52yjw" name="DataMasking"/>
     <routinesParameter id="_Ne8V4PnaEeut1L05m52yjw" name="DataOperation"/>
-    <routinesParameter id="_NewIoPnaEeut1L05m52yjw" name="DataQualityDependencies"/>
-    <routinesParameter id="_NetFUPnaEeut1L05m52yjw" name="DataQuality"/>
-    <routinesParameter id="_NezzAPnaEeut1L05m52yjw" name="DqStringHandling"/>
     <routinesParameter id="_Ne_ZMPnaEeut1L05m52yjw" name="Mathematical"/>
     <routinesParameter id="_NfCcgPnaEeut1L05m52yjw" name="Numeric"/>
     <routinesParameter id="_NfFf0PnaEeut1L05m52yjw" name="Relational"/>
@@ -113,11 +108,12 @@
     <routinesParameter id="_NfQe8PnaEeut1L05m52yjw" name="TalendDate"/>
     <routinesParameter id="_NfWlkPnaEeut1L05m52yjw" name="TalendStringUtil"/>
     <routinesParameter id="_NfUJUPnaEeut1L05m52yjw" name="TalendString"/>
+    <routinesParameter id="_4Y4GoP6xEeu5V6US-n8SSA" name="MDM"/>
   </parameters>
   <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileInputDelimited_3"/>
     <elementParameter field="LABEL" name="FILENAMETEXT" value="&quot;When the input source is a stream or a zip file,footer and random shouldn't be bigger than 0.&quot;"/>
-    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/Users/nrehman/NagmaLocal/StudentFiles/DIBasics/UseCaseSales/ModifiedFiles/sales.out&quot;"/>
+    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/Users/nrehman/NagmaRemote/ModifiedFiles/sales.out&quot;"/>
     <elementParameter field="CHECK" name="CSV_OPTION" value="false"/>
     <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;"/>
     <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
@@ -181,7 +177,7 @@
     <elementParameter field="TEXT" name="PORT" value="&quot;3306&quot;"/>
     <elementParameter field="TEXT" name="DBNAME" value="&quot;SqlDB_Linux&quot;"/>
     <elementParameter field="TEXT" name="USER" value="&quot;faz&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Hhpis0DvLTQihnegG4pt5T1F5UEr9ILmIt7YAW/ZpClouAee/EDxpVk="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:WN6S86vVyx9tZwnY/HZ4sq1HJ7bKPAbiTDpaYjbjoxpyFBB0zpId4IM="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sales&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="DROP_CREATE"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
@@ -290,7 +286,7 @@
     <elementParameter field="TEXT" name="PORT" value="&quot;3306&quot;"/>
     <elementParameter field="TEXT" name="DBNAME" value="&quot;SqlDB_Linux&quot;"/>
     <elementParameter field="TEXT" name="USER" value="&quot;faz&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:ksHxRtrpQFTNgayDklxOwIlgM6luPGeuyZwifVRBF289g4vv5D/W6O8="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:YRRPeigIfhLoed58ayiV/4HSu3FkqIi9+/Q3EheHZIhi5QVWSkLkyKA="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;prod&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="CREATE_IF_NOT_EXISTS"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="UPDATE"/>
@@ -352,7 +348,7 @@
     <elementParameter field="TEXT" name="PORT" value="&quot;3306&quot;"/>
     <elementParameter field="TEXT" name="DBNAME" value="&quot;SqlDB_Linux&quot;"/>
     <elementParameter field="TEXT" name="USER" value="&quot;faz&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:zeddnus9CkE0ivkxPvnAPoJyLXBzV+7VCJrrtaeGgg0Y3jme4lDaAsw="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:iaDZqWkbFKlmFeIkvh9ksC8j0KJV93Xr84UuhSdVJT+mSmx/Ao18h2M="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;cust&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="DROP_CREATE"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT_OR_UPDATE"/>
@@ -405,7 +401,7 @@
   <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="384">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileInputDelimited_2"/>
     <elementParameter field="LABEL" name="FILENAMETEXT" value="&quot;When the input source is a stream or a zip file,footer and random shouldn't be bigger than 0.&quot;"/>
-    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/Users/nrehman/NagmaLocal/StudentFiles/DIBasics/UseCaseSales/ModifiedFiles/products.csv&quot;"/>
+    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/Users/nrehman/NagmaRemote/ModifiedFiles/products.csv&quot;"/>
     <elementParameter field="CHECK" name="CSV_OPTION" value="false"/>
     <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;"/>
     <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
@@ -460,7 +456,7 @@
   <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="256">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileInputDelimited_1"/>
     <elementParameter field="LABEL" name="FILENAMETEXT" value="&quot;When the input source is a stream or a zip file,footer and random shouldn't be bigger than 0.&quot;"/>
-    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/Users/nrehman/NagmaLocal/StudentFiles/DIBasics/UseCaseSales/ModifiedFiles/customers.csv&quot;"/>
+    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/Users/nrehman/NagmaRemote/ModifiedFiles/customers.csv&quot;"/>
     <elementParameter field="CHECK" name="CSV_OPTION" value="false"/>
     <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;"/>
     <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
@@ -524,7 +520,7 @@
     <elementParameter field="TEXT" name="PORT" value="&quot;3306&quot;"/>
     <elementParameter field="TEXT" name="DBNAME" value="&quot;SqlDB_Linux&quot;"/>
     <elementParameter field="TEXT" name="USER" value="&quot;faz&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:oBIyJvtitIXONNJeha25TemnYZwrzgQa0uub/zPvgWd23aOI7udKLYU="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:eWAftvUAdCa1+xeyGiOlVFPZxNPxu7Jrm2lNGStvMVHYLa0U+r5QaGE="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;realSales&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="DROP_IF_EXISTS_AND_CREATE"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -586,7 +582,7 @@
     <elementParameter field="TEXT" name="PORT" value="&quot;3306&quot;"/>
     <elementParameter field="TEXT" name="DBNAME" value="&quot;SqlDB_Linux&quot;"/>
     <elementParameter field="TEXT" name="USER" value="&quot;faz&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:oJslwjzOxJuPksfyq9jzg3RYfGdWJE08+FD24+Ya42++IoPSzlEw1UA="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:yP+hP2d5Fj6iP27oNIo65NmhKQE7z68oBdf751mfpW38qtmS5kGfoLQ="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;rejectSales&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="DROP_IF_EXISTS_AND_CREATE"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -681,13 +677,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_2e9369fc-bd58-4812-9ed7-e81d431492b3"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>cJ8B/zG587BolSMF9wuNoydRg3ZcSg6xlIBAr4gw5N9DCurx/1T6Cwe6tFLxUKxVIudGS+UFYY9N
-qeuPH4Yg7Q==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_f1ff00a3-f1c2-499e-ace8-29b566835bfd"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>qT7BEViPa0C4YBLl+TBe3Lfqje9Tu7aVVChkzmXQ/blXs7m6cpdn80pbhd7vNIQgN4JtDlMR649F
-21nwVexIOw==</DigestValue></Reference></SignedInfo><SignatureValue>ghUA5e2fZnfRor/r6WCjt+kVUiNo49YrtOTpcqW9EMiQujLfyrbyVJrkv7Y+i/5xWeYrAPWkfil5
-/ItW9luTztcKGYBwZbmTsdO2wcUq+pz9s4NSrnDQXqCk2FYNG/z02vecvb35W9hruIOtQ4iYPADz
-ahYCzi/Az4VplsHV0jAIo41in0bvhNPnk33+3+nAJVbgFwN5615f5PSfpCwYw1CUtedS0CABdQGJ
-TmdVkJejiaWov0NuKj+hY32HAadc5KSX8tMXTAVO12x7W/qPmcULCd5N8UgBj7lWZQFTfNq2Z02r
-Yg7aVsKXn85TWUDsCA+S8gC4yuSUXQlJEd6+dw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_814daafb-38f9-4800-a7f2-875b447265f9"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>RkLCGgQdgr/LKxok6oUvqQ0pSAWs+cw2s4NMbLrnaVL8ZS8YF+rzypCWJS8kXeBIwWe+wCAgfidi
+Aep/sJqDhw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_db7db493-87c5-4619-be1d-628d0fb7eb2d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ZoOZTjPWUYZAr+uJ6ec6fsGiJb8oItdl2oQyF23yUgDJevjXgMUodORu63BrKVuur77Iy4t7DTjP
+/svQ3VDuZQ==</DigestValue></Reference></SignedInfo><SignatureValue>JwlR1ICpzlt/QX9e3mYbC/XWVTEOTEnCPYboCVFOPY+WkmROMPEHOoI2YQRVoc+/xcW4ttSDXGCw
+O1ihR5lHR8ke12UejUqGLKkO/esgKR++eTBNgCJ+bkoesMDWc9ebE5k53/Ymb6wgMhXJjSMooERJ
+CSmr2ofyDkMguRQMAZUInN9shwsE0Kaw/JtPV+j2/M3lkYx4Q5hoI2tnZGsFDfartlrNE3oTXIx6
+9O9nHYsZDjcUwmFc7Kb3eUGrQsmDJHZ0Dx6AmaX9BQbmDCa2xPxBbn1aMDP28cGHCSqnoj2MWnIH
+iX+SmGn0dAU1x2ChJKlvPafmPQpzfU1+GFu1uA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U
@@ -709,4 +705,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_f1ff00a3-f1c2-499e-ace8-29b566835bfd" Target="#_2e9369fc-bd58-4812-9ed7-e81d431492b3"><Timestamp>2021-08-16 16:27:12</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_db7db493-87c5-4619-be1d-628d0fb7eb2d" Target="#_814daafb-38f9-4800-a7f2-875b447265f9"><Timestamp>2021-08-17 00:36:21</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
