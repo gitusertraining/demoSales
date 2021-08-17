@@ -13,6 +13,7 @@
     <module>code/beans</module>
     <module>jobs/process/MyRemoteJobs/demorejects_0.1</module>
     <module>jobs/process/MyRemoteJobs/demogit_0.1</module>
+    <module>jobs/process/BuildingJobs/printcustomers_2.0</module>
   </modules>
   <properties>
     <signer.version>7.3.1</signer.version>
