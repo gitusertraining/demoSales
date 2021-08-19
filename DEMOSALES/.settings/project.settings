@@ -37,19 +37,19 @@
         "show" : true,
         "field" : "CHECK",
         "name" : "ON_STATCATCHER_FLAG",
-        "value" : "false",
+        "value" : "true",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "CHECK",
         "name" : "ON_LOGCATCHER_FLAG",
-        "value" : "false",
+        "value" : "true",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "CHECK",
         "name" : "ON_METERCATCHER_FLAG",
-        "value" : "false",
+        "value" : "true",
         "contextMode" : false
       }, {
         "show" : true,
@@ -97,7 +97,7 @@
         "show" : true,
         "field" : "CHECK",
         "name" : "ON_DATABASE_FLAG",
-        "value" : "false",
+        "value" : "true",
         "contextMode" : false
       }, {
         "show" : true,
@@ -109,13 +109,13 @@
         "show" : true,
         "field" : "CLOSED_LIST",
         "name" : "DB_TYPE",
-        "value" : "tJDBCOutput",
+        "value" : "tMysqlOutput",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "CLOSED_LIST",
         "name" : "DB_VERSION",
-        "value" : "ORACLE_12",
+        "value" : "MYSQL_8",
         "contextMode" : false
       }, {
         "show" : true,
@@ -138,19 +138,19 @@
         "show" : true,
         "field" : "TEXT",
         "name" : "HOST",
-        "value" : "\"\"",
+        "value" : "\"192.168.1.20\"",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "TEXT",
         "name" : "PORT",
-        "value" : "\"\"",
+        "value" : "\"3306\"",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "TEXT",
         "name" : "DBNAME",
-        "value" : "\"\"",
+        "value" : "\"SqlDB_Linux\"",
         "contextMode" : false
       }, {
         "show" : true,
@@ -162,25 +162,25 @@
         "show" : true,
         "field" : "TEXT",
         "name" : "PROPERTIES",
-        "value" : "\"\"",
+        "value" : "\"&serverTimezone=UTC\"",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "TEXT",
         "name" : "SCHEMA_DB",
-        "value" : "\"\"",
+        "value" : "",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "TEXT",
         "name" : "USER",
-        "value" : "\"\"",
+        "value" : "\"faz\"",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "PASSWORD",
         "name" : "PASS",
-        "value" : "enc:system.encryption.key.v1:Ab3tgSXazMO9hYJIcL1e3K8Ai9BZSr8HclE3xJaT",
+        "value" : "enc:system.encryption.key.v1:pFCesvWRZMpwooSCBab2pwSG+G6HBgajLbvZ6m9jTA0EKzJMZhKk2uI=",
         "contextMode" : false
       }, {
         "show" : true,
@@ -192,19 +192,19 @@
         "show" : true,
         "field" : "DBTABLE",
         "name" : "TABLE_STATS",
-        "value" : "\"\"",
+        "value" : "\"statcatcher\"",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "DBTABLE",
         "name" : "TABLE_LOGS",
-        "value" : "\"\"",
+        "value" : "\"logcatcher\"",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "DBTABLE",
         "name" : "TABLE_METER",
-        "value" : "\"\"",
+        "value" : "\"flowmeter\"",
         "contextMode" : false
       }, {
         "show" : true,
