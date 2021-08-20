@@ -37,19 +37,19 @@
         "show" : true,
         "field" : "CHECK",
         "name" : "ON_STATCATCHER_FLAG",
-        "value" : "true",
+        "value" : "false",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "CHECK",
         "name" : "ON_LOGCATCHER_FLAG",
-        "value" : "true",
+        "value" : "false",
         "contextMode" : false
       }, {
         "show" : true,
         "field" : "CHECK",
         "name" : "ON_METERCATCHER_FLAG",
-        "value" : "true",
+        "value" : "false",
         "contextMode" : false
       }, {
         "show" : true,
@@ -180,7 +180,7 @@
         "show" : true,
         "field" : "PASSWORD",
         "name" : "PASS",
-        "value" : "enc:system.encryption.key.v1:pFCesvWRZMpwooSCBab2pwSG+G6HBgajLbvZ6m9jTA0EKzJMZhKk2uI=",
+        "value" : "enc:system.encryption.key.v1:oe5/8H9JzD5Y6txBffq2jPKgEVLkLKnXx1InXdFZWFhGKZerFn3zQbA=",
         "contextMode" : false
       }, {
         "show" : true,
