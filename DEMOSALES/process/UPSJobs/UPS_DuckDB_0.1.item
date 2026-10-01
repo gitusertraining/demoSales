@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Default" jobType="Standard" xmi:version="2.0">
+  <context confirmationNeeded="false" name="Default">
+    <contextParameter comment="UPS shipment extract (CSV with header)" name="ups_input_file" prompt="ups_input_file?" promptNeeded="false" type="id_String" value="C:/Users/nrehman/NagmaRemote/UPS/ups_shipments.csv"/>
+    <contextParameter comment="DuckDB SQL script run by tJava_1" name="ups_sql_file" prompt="ups_sql_file?" promptNeeded="false" type="id_String" value="C:/Users/nrehman/NagmaRemote/UPS/sql/ups_transform.sql"/>
+    <contextParameter comment="DuckDB database file; empty = in-memory" name="duckdb_file" prompt="duckdb_file?" promptNeeded="false" type="id_String" value="C:/Users/nrehman/NagmaRemote/UPS/ups.duckdb"/>
+    <contextParameter comment="Folder for summary/rejects CSV and clean Parquet" name="output_dir" prompt="output_dir?" promptNeeded="false" type="id_String" value="C:/Users/nrehman/NagmaRemote/UPS/out"/>
+  </context>
+  <parameters>
+    <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" show="false" value='{"JOB_RUN_VM_ARGUMENTS":["-Xms256M","-Xmx1024M"]}'/>
+    <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" show="false" value="false"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="0"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="0"/>
+    <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" show="false" value="true"/>
+    <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" show="false" value="true"/>
+    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="false"/>
+    <elementParameter field="CHECK" name="IMPLICIT_TCONTEXTLOAD" value="false"/>
+    <elementParameter field="CHECK" name="UPDATE_COMPONENTS" value="false"/>
+    <elementParameter field="PROPERTY_TYPE" name="PROPERTY_TYPE" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE:PROPERTY_TYPE" value="BUILT_IN"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE:REPOSITORY_PROPERTY_TYPE" value=""/>
+    <routinesParameter id="_LwpwcP6uEeuZcpB1vKUB3Q" name="DataOperation"/>
+    <routinesParameter id="_4Y4GoP6xEeu5V6US-n8SSA" name="MDM"/>
+    <routinesParameter id="_Lwy6YP6uEeuZcpB1vKUB3Q" name="Mathematical"/>
+    <routinesParameter id="_Lw8rYP6uEeuZcpB1vKUB3Q" name="Numeric"/>
+    <routinesParameter id="_LxIRkP6uEeuZcpB1vKUB3Q" name="Relational"/>
+    <routinesParameter id="_LtFfEP6uEeuZcpB1vKUB3Q" name="SQLike"/>
+    <routinesParameter id="_LxSCkP6uEeuZcpB1vKUB3Q" name="StringHandling"/>
+    <routinesParameter id="_LxYwQP6uEeuZcpB1vKUB3Q" name="TalendDataGenerator"/>
+    <routinesParameter id="_Lxfd8P6uEeuZcpB1vKUB3Q" name="TalendDate"/>
+    <routinesParameter id="_LxwjsP6uEeuZcpB1vKUB3Q" name="TalendStringUtil"/>
+    <routinesParameter id="_LxqdEP6uEeuZcpB1vKUB3Q" name="TalendString"/>
+  </parameters>
+  <node componentName="tLibraryLoad" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="96" posY="96">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLibraryLoad_1"/>
+    <elementParameter field="MODULE_LIST" name="LIBRARY" value="duckdb_jdbc-1.1.3.jar"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="import java.sql.*;"/>
+    <elementParameter field="TEXT" name="LABEL" value="Load DuckDB JDBC driver"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="TABLE" name="HOTLIBS"/>
+    <metadata connector="FLOW" name="tLibraryLoad_1"/>
+  </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="96">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="// Run the UPS DuckDB SQL script: DuckDB does the heavy lifting (load, cleanse, aggregate, export).&#10;String inputFile = context.ups_input_file.replace(&quot;\\&quot;, &quot;/&quot;).replace(&quot;'&quot;, &quot;''&quot;);&#10;String outputDir = context.output_dir.replace(&quot;\\&quot;, &quot;/&quot;).replace(&quot;'&quot;, &quot;''&quot;);&#10;new java.io.File(context.output_dir).mkdirs();&#10;&#10;String script = new String(java.nio.file.Files.readAllBytes(java.nio.file.Paths.get(context.ups_sql_file)), java.nio.charset.StandardCharsets.UTF_8);&#10;script = script.replace(&quot;${UPS_INPUT_FILE}&quot;, inputFile).replace(&quot;${OUTPUT_DIR}&quot;, outputDir);&#10;&#10;StringBuilder sqlNoComments = new StringBuilder();&#10;for (String line : script.split(&quot;\r?\n&quot;)) {&#10;    if (!line.trim().startsWith(&quot;--&quot;)) {&#10;        sqlNoComments.append(line).append(&quot;\n&quot;);&#10;    }&#10;}&#10;&#10;Class.forName(&quot;org.duckdb.DuckDBDriver&quot;);&#10;java.sql.Connection duckConn = java.sql.DriverManager.getConnection(&quot;jdbc:duckdb:&quot; + context.duckdb_file);&#10;try {&#10;    java.sql.Statement stmt = duckConn.createStatement();&#10;    try {&#10;        for (String sql : sqlNoComments.toString().split(&quot;;\\s*(\\n|$)&quot;)) {&#10;            sql = sql.trim();&#10;            if (sql.isEmpty()) {&#10;                continue;&#10;            }&#10;            System.out.println(&quot;[UPS_DuckDB] &quot; + sql.split(&quot;\n&quot;)[0]);&#10;            stmt.execute(sql);&#10;        }&#10;        java.sql.ResultSet rs = stmt.executeQuery(&quot;SELECT (SELECT count(*) FROM stg_ups_shipments), (SELECT count(*) FROM ups_shipments_clean), (SELECT count(*) FROM ups_rejects)&quot;);&#10;        rs.next();&#10;        globalMap.put(&quot;UPS_RAW_ROWS&quot;, rs.getLong(1));&#10;        globalMap.put(&quot;UPS_CLEAN_ROWS&quot;, rs.getLong(2));&#10;        globalMap.put(&quot;UPS_REJECT_ROWS&quot;, rs.getLong(3));&#10;        rs.close();&#10;    } finally {&#10;        stmt.close();&#10;    }&#10;} finally {&#10;    duckConn.close();&#10;}&#10;globalMap.put(&quot;UPS_SUMMARY_FILE&quot;, outputDir + &quot;/ups_service_summary.csv&quot;);&#10;System.out.println(&quot;[UPS_DuckDB] raw=&quot; + globalMap.get(&quot;UPS_RAW_ROWS&quot;) + &quot; clean=&quot; + globalMap.get(&quot;UPS_CLEAN_ROWS&quot;) + &quot; rejects=&quot; + globalMap.get(&quot;UPS_REJECT_ROWS&quot;));&#10;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="DuckDB load/cleanse/aggregate UPS"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJava_1"/>
+  </node>
+  <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="96" posY="256">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileInputDelimited_1"/>
+    <elementParameter field="FILE" name="FILENAME" value='((String)globalMap.get("UPS_SUMMARY_FILE"))'/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="false"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" value='"\n"'/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value='";"'/>
+    <elementParameter field="TEXT" name="HEADER" value="1"/>
+    <elementParameter field="TEXT" name="FOOTER" value="0"/>
+    <elementParameter field="TEXT" name="LIMIT" value=""/>
+    <elementParameter field="CHECK" name="REMOVE_EMPTY_ROW" value="true"/>
+    <elementParameter field="CHECK" name="UNCOMPRESS" value="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="CHECK" name="RANDOM" value="false"/>
+    <elementParameter field="CHECK" name="TRIMALL" value="false"/>
+    <elementParameter field="CHECK" name="CHECK_FIELDS_NUM" value="false"/>
+    <elementParameter field="CHECK" name="CHECK_DATE" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value='"UTF-8"'/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="UTF-8"/>
+    <elementParameter field="CHECK" name="SPLITRECORD" value="false"/>
+    <elementParameter field="CHECK" name="ENABLE_DECODE" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="Read UPS service summary"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="TABLE" name="TRIMSELECT">
+      <elementValue elementRef="SCHEMA_COLUMN" value="service_level"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="shipments"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="total_billed_weight_lbs"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="total_net_charge"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="avg_net_charge"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="avg_transit_days"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="delivered_pct"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="TABLE" name="DECODE_COLS" show="false">
+      <elementValue elementRef="SCHEMA_COLUMN" value="service_level"/>
+      <elementValue elementRef="DECODE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="shipments"/>
+      <elementValue elementRef="DECODE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="total_billed_weight_lbs"/>
+      <elementValue elementRef="DECODE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="total_net_charge"/>
+      <elementValue elementRef="DECODE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="avg_net_charge"/>
+      <elementValue elementRef="DECODE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="avg_transit_days"/>
+      <elementValue elementRef="DECODE" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="delivered_pct"/>
+      <elementValue elementRef="DECODE" value="false"/>
+    </elementParameter>
+    <metadata connector="FLOW" label="ups_service_summary" name="tFileInputDelimited_1">
+      <column comment="" key="false" length="-1" name="service_level" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="shipments" nullable="true" pattern="" precision="-1" sourceType="" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="total_billed_weight_lbs" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="total_net_charge" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="avg_net_charge" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="avg_transit_days" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="delivered_pct" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+    </metadata>
+    <metadata connector="REJECT" label="ups_service_summary" name="REJECT">
+      <column comment="" key="false" length="-1" name="service_level" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="shipments" nullable="true" pattern="" precision="-1" sourceType="" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="total_billed_weight_lbs" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="total_net_charge" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="avg_net_charge" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="avg_transit_days" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="delivered_pct" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="errorCode" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="errorMessage" nullable="true" pattern="" precision="0" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="352" posY="256">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLogRow_1"/>
+    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
+    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
+    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE" show="false" value="true"/>
+    <elementParameter field="RADIO" name="PRINT_LABEL" show="false" value="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" show="false" value="false"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value='"|"'/>
+    <elementParameter field="CHECK" name="PRINT_HEADER" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false"/>
+    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false"/>
+    <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="ups_service_summary" name="tLogRow_1">
+      <column comment="" key="false" length="-1" name="service_level" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="shipments" nullable="true" pattern="" precision="-1" sourceType="" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="total_billed_weight_lbs" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="total_net_charge" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="avg_net_charge" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="avg_transit_days" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="delivered_pct" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="2" metaname="tLibraryLoad_1" offsetLabelX="0" offsetLabelY="0" source="tLibraryLoad_1" target="tJava_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="2" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tFileInputDelimited_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk2"/>
+  </connection>
+  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tFileInputDelimited_1" offsetLabelX="0" offsetLabelY="0" source="tFileInputDelimited_1" target="tLogRow_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
+  </connection>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLibraryLoad_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;230;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;230;250"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileInputDelimited_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="160;190;240"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="220;230;250"/>
+  </subjob>
+</talendfile:ProcessType>
